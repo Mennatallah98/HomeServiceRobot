@@ -1,0 +1,55 @@
+#!/usr/bin/env python
+import rospy
+from sensor_msgs.msg import Joy
+from std_msgs.msg import Int16
+from geometry_msgs.msg import Twist
+
+linear_speed=0.2
+angular_speed=0.2
+def callback(data):
+    global linear_speed
+    global angular_speed
+    joystick = Twist()
+
+    if data.axes[1] == 1:    # ^ move forward #up arrow
+        joystick.linear.x = linear_speed
+			     
+    elif data.axes[1] == -1: # v move backward #down arrow
+        joystick.linear.x = -linear_speed
+
+    elif data.axes[0] == -1: # -> move right #right arrow
+        joystick.angular.z = -angular_speed
+        
+    elif data.axes[0] == 1:# <- move left   #left arrow
+        joystick.angular.z = angular_speed
+
+    elif data.buttons[5] == 1: # increase linear speed   #R1 
+        linear_speed += 0.05
+        print "linear_speed:" , linear_speed
+    
+    elif data.buttons[7] == 1: # decrease linear speed   #R2
+        linear_speed -= 0.05
+        print "linear_speed:" , linear_speed  
+
+    elif data.buttons[4] == 1: # increase angular speed  #L1
+        angular_speed += 0.05
+        print "angular_speed:" , angular_speed 
+
+    elif data.buttons[6] == 1: # increase angular speed  #L2
+        angular_speed -= 0.05
+        print "angular_speed:" , angular_speed
+        
+
+    else:		    # stop
+	count=0
+    pub.publish(joystick)
+	
+def start():
+    global pub
+    pub = rospy.Publisher('cmd_vel', Twist, queue_size=1) # publish on robot cmd_vel
+    rospy.Subscriber('joy', Joy, callback) # subscribe the joy input
+    rospy.init_node('joy_teleop')
+    rospy.spin()
+
+if __name__ == "__main__":
+    start()
