@@ -7,7 +7,7 @@ https://github.com/Mennatallah98/HomeServiceRobot/assets/45118345/5940e532-9aae-
 
 ## Overview
 
-This project is the fifth and final project in Udacity Robotics Software Engineer nano degree where the world was mapped using [gmmaping] which produces 2D-maps and navigates the mapped world using [amcl]. In addition, [joy] package was used to move the rbot during the mapping process and it can also be replaced by [teleop_twist_keyboard].
+This project is the fifth and final project in Udacity Robotics Software Engineer nano degree where the world was mapped using [gmmaping] which produces 2D-maps and[joy] package was used to move the rbot during the mapping process and it can also be replaced by [teleop_twist_keyboard].After mapping,2 boxes are placed and the robot is given their places as goals to pick and palce them.
 
 **Keywords:** ROS,  mapping, navigation, pathplanning, gmapping, amcl.
 
@@ -57,35 +57,29 @@ Source the workspace by adding this line .bashrc
 
 ## Usage
 
-In a new terminal
 
-Open the world the world in gazebo and rviz with the rbot included
-
-	roslaunch my_robot world.launch
 
 ### Mapping
 
-In another window run the teleop node.
+In new window open test_slam bash file
 
-For the joystick:
+	cd catkin_ws/src/HomeServiceRobot/scripts
+	./test_slam.sh
+	
+If keyboard teleop is to be used instead of joy open the launch file and replace
 
 	roslaunch my_robot joy.launch
 	
-For keyboard:
+with
 
 	rosrun teleop_twist_keyboard teleop_twist_keyboard.py
-	
-In another window run [rtabmap] in mapping mode.
 
-	roslaunch my_robot mapping.launch	
-	
-For a map with clear features go around the world at least 3 times to achieve loop closure
+### Navigation to pick and place
 
-### Localization
+In new window open home_service bash file
 
-In another window run [rtabmap] in localization mode.
-
-	roslaunch my_robot localization.launch
+	cd catkin_ws/src/HomeServiceRobot/scripts
+	./home_service.sh
 
 ## Config files
 
@@ -98,6 +92,19 @@ Config file folder/config
 * **global_costmap_params.yaml:** contains the parameters for [global] [costmap].
 
 * **local_costmap_params.yaml:** contains the parameters for [local] [costmap].
+
+## Bash files
+
+* **add_markers.sh:** runs world, and amcl launch files also add_markers node.
+
+* **home_service.sh:** runs world, and amcl launch files also add_markers, and pick_objects nodes.
+
+* **pick_objects.sh:** runs world, and amcl launch files also pick_objects node.
+
+* **test_navigation.sh:** runs world, and amcl launch files.
+
+* **test_slam.sh:** runs world, gmapping, and joy launch files.
+
 
 ## Launch files
 
