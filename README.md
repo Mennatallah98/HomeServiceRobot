@@ -125,7 +125,7 @@ Config file folder/config
 
 ## Nodes
 
-###joy_teleop
+### joy_teleop
 
 Sends velocity commands to the robot according to the buttons pressed in the joystick
 
