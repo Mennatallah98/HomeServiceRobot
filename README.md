@@ -81,8 +81,6 @@ In another window run [rtabmap] in mapping mode.
 	
 For a map with clear features go around the world at least 3 times to achieve loop closure
 
-![loop_closure image](loop_closure.png)  
-
 ### Localization
 
 In another window run [rtabmap] in localization mode.
