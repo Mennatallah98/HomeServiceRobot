@@ -159,7 +159,7 @@ Add the boxes in the pickup location and deletes them to simulate the robot pick
 
 * **`/visualization_marker`** ([visualization_msgs/Marker Message])
 
-		The marker to be displayed in Gazebo.
+	The marker to be displayed in Gazebo.
 
 ### pick_objects	
 
