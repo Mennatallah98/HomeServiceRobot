@@ -7,7 +7,7 @@ https://github.com/Mennatallah98/HomeServiceRobot/assets/45118345/5940e532-9aae-
 
 ## Overview
 
-This project is the fifth and final project in Udacity Robotics Software Engineer nano degree where the world was mapped using [gmmaping] which produces 2D-maps and[joy] package was used to move the rbot during the mapping process and it can also be replaced by [teleop_twist_keyboard].After mapping,2 boxes are placed and the robot is given their places as goals to pick and palce them.
+This project is the fifth and final project in Udacity Robotics Software Engineer nano degree where the world was mapped using [slam_gmmaping] which produces 2D-maps and[joy] package was used to move the rbot during the mapping process and it can also be replaced by [teleop_twist_keyboard].After mapping,2 boxes are placed and the robot is given their places as goals to pick and palce them.
 
 **Keywords:** ROS,  mapping, navigation, pathplanning, gmapping, amcl.
 
@@ -114,14 +114,20 @@ Config file folder/config
 
 * **joy.launch:** Runs [joy] node with customized joy script.
 
-* **gmapping.launch:** Runs [gmapping] to generate map for the world.
+* **gmapping.launch:** Runs [slam_gmapping] to generate map for the world.
 
 * **amcl.launch:** Runs [amcl], [move_base], and [map_server] and sets the initial position of the robot in the map.
 
 
 ## Packages
 
-* **my_robot:** Contains the URDF of r 4-wheeled under the name of my_robot with the attached sensors including depth camera in addition to the world with robot embbeded in aldo the modified configuartion files and the world map.
+* **my_robot:** Contains the URDF of r 4-wheeled under the name of my_robot with the attached sensors including in addition to the world with robot embbeded in aldo the modified configuartion files and the world map also joy_teleop node which controls the robot using the joystick.
+
+* **add_markers:** Contains add_markers node.
+
+* **pick_object:** Contains pick_objects node
+
+* **[gmapping]:**: Draws a map for the World in Gazebo.
 
 ## Nodes
 
@@ -142,6 +148,52 @@ Sends velocity commands to the robot according to the buttons pressed in the joy
 * **`/joy`** ([sensor_msgs/Joy Message])
 
 	The buttons pressed in the joystick.
+	
+
+	
+### add_markers
+
+Add the boxes in the pickup location and deletes them to simulate the robot picking them up and finally, add the boxes in the drop off location to simulate the robot dropping them off.
+
+#### Published Topics
+
+* **`/visualization_marker`** ([visualization_msgs/Marker Message])
+
+		The marker to be displayed in Gazebo.
+
+### pick_objects	
+
+Sends the pickup location as goal to the [move_base], and then sends to add marker that it has reached the pickup position to remove the marker, finally send the dropoff location to the [move_base] and when it reaches the location it sends to the add_marker node to add the marker in the dropoff location.
+
+
+#### Services
+
+* **`move_base`** ([move_base_msgs/MoveBaseAction])
+
+	Sends the goal to [move_base] to move the robot.
+
+	
+#### Parameters
+
+* **`marker_condition`** (int)
+
+	The action the add_marker node should take.
+
+* **`pickup_x`** (int)
+
+	The pickup location x co-ordinate.
+	
+* **`pickup_y`** (int)
+
+	The pickup location y co-ordinate.
+	
+* **`dropoff_x`** (int)
+
+	The dropoff location x co-ordinate.
+	
+* **`dropoff_y`** (int)
+
+	The dropoff location y co-ordinate.
 
 ## Structure
 
@@ -226,7 +278,7 @@ Sends velocity commands to the robot according to the buttons pressed in the joy
 [rviz]: http://wiki.ros.org/rviz
 [joy]: http://wiki.ros.org/joy
 [teleop_twist_keyboard]: http://wiki.ros.org/teleop_twist_keyboard
-[gmapping]: http://wiki.ros.org/gmapping
+[slam_gmapping]: http://wiki.ros.org/gmapping
 [amcl]: http://wiki.ros.org/amcl
 [navigation_stack]: http://wiki.ros.org/navigation/Tutorials/RobotSetup
 [base_local_planner]: http://wiki.ros.org/base_local_planner
@@ -238,3 +290,5 @@ Sends velocity commands to the robot according to the buttons pressed in the joy
 [geometry_msgs/Twist]: http://docs.ros.org/en/melodic/api/geometry_msgs/html/msg/Twist.html
 [sensor_msgs/Joy Message]: http://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/Joy.html
 [map_server]: http://wiki.ros.org/map_server
+[visualization_msgs/Marker Message]: http://docs.ros.org/en/noetic/api/visualization_msgs/html/msg/Marker.html
+[move_base_msgs/MoveBaseAction]: http://docs.ros.org/en/fuerte/api/move_base_msgs/html/msg/MoveBaseAction.html
