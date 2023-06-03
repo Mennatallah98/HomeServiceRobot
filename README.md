@@ -25,7 +25,7 @@ To install all packages from the this repository as Debian packages use
     sudo apt-get install ros-melodic-navigation
     sudo apt-get install ros-melodic-map-server
     sudo apt-get install ros-melodic-move-base
-     sudo apt-get install ros-melodic-amcl
+    sudo apt-get install ros-melodic-amcl
     
 To navigate with keyboard 
 
