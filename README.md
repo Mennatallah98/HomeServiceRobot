@@ -107,9 +107,9 @@ Config file folder/config
 
 * **joy.launch:** Runs [joy] node with customized joy script.
 
-* **mapping.launch:** Runs [rtabmap] in mapping mode wit args="--delete_db_on_start" and rtabmap visulization.
+* **gmapping.launch:** Runs [gmapping] to generate map for the world.
 
-* **localization.launch:** Runs [rtabmap] in localization mode without args="--delete_db_on_start" in addition to [move_base].
+* **amcl.launch:** Runs [amcl], [move_base], and [map_server] and sets the initial position of the robot in the map.
 
 
 ## Packages
@@ -230,3 +230,4 @@ Sends velocity commands to the robot according to the buttons pressed in the joy
 [move_base]: http://wiki.ros.org/move_base
 [geometry_msgs/Twist]: http://docs.ros.org/en/melodic/api/geometry_msgs/html/msg/Twist.html
 [sensor_msgs/Joy Message]: http://docs.ros.org/en/melodic/api/sensor_msgs/html/msg/Joy.html
+[map_server]: http://wiki.ros.org/map_server
