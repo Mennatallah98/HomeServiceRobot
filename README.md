@@ -1,11 +1,13 @@
 # HomeServiceRobot
 [![Udacity - Robotics NanoDegree Program](https://s3-us-west-1.amazonaws.com/udacity-robotics/Extra+Images/RoboND_flag.png)](https://www.udacity.com/robotics)
 
-  
+
+https://github.com/Mennatallah98/HomeServiceRobot/assets/45118345/5940e532-9aae-4eb3-8605-de85114e4b3d
+
 
 ## Overview
 
-This project is the fourth project in Udacity Robotics Software Engineer nano degree where the world was mapped using [rtabmap] which produces both 2D-maps and 3D-maps also can be used for navigation. In addition, [joy] package was used to move the rbot during the mapping process and it can also be replaced by [teleop_twist_keyboard].
+This project is the fifth and final project in Udacity Robotics Software Engineer nano degree where the world was mapped using [gmmaping] which produces 2D-maps and navigates the mapped world using [amcl]. In addition, [joy] package was used to move the rbot during the mapping process and it can also be replaced by [teleop_twist_keyboard].
 
 **Keywords:** ROS, rtabmap, 3D-map, mapping, navigation, SLAM.
 
@@ -175,7 +177,8 @@ Sends velocity commands to the robot according to the buttons pressed in the joy
 [rviz]: http://wiki.ros.org/rviz
 [joy]: http://wiki.ros.org/joy
 [teleop_twist_keyboard]: http://wiki.ros.org/teleop_twist_keyboard
-[rtabmap]: http://wiki.ros.org/rtabmap_ros
+[gmapping]: http://wiki.ros.org/gmapping
+[amcl]: http://wiki.ros.org/amcl
 [navigation_stack]: http://wiki.ros.org/navigation/Tutorials/RobotSetup
 [base_local_planner]: http://wiki.ros.org/base_local_planner
 [costmap]: http://wiki.ros.org/costmap_2d
