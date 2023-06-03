@@ -9,7 +9,7 @@ https://github.com/Mennatallah98/HomeServiceRobot/assets/45118345/5940e532-9aae-
 
 This project is the fifth and final project in Udacity Robotics Software Engineer nano degree where the world was mapped using [gmmaping] which produces 2D-maps and navigates the mapped world using [amcl]. In addition, [joy] package was used to move the rbot during the mapping process and it can also be replaced by [teleop_twist_keyboard].
 
-**Keywords:** ROS, rtabmap, 3D-map, mapping, navigation, SLAM.
+**Keywords:** ROS,  mapping, navigation, pathplanning, gmapping, amcl.
 
 **Author: Mennatallah Aly<br />**
 
@@ -25,8 +25,7 @@ To install all packages from the this repository as Debian packages use
     sudo apt-get install ros-melodic-navigation
     sudo apt-get install ros-melodic-map-server
     sudo apt-get install ros-melodic-move-base
-    sudo apt install ros-melodic-rtabmap-ros
-    sudo apt install ros-melodic-rtabmap
+     sudo apt-get install ros-melodic-amcl
     
 To navigate with keyboard 
 
@@ -47,7 +46,7 @@ To build from source, clone the latest version from this repository into your ca
 
 	cd catkin_ws/src
 	sudo apt update
-	git clone https://github.com/Mennatallah98/MapMyWorld.git
+	git clone https://github.com/Mennatallah98/HomeServiceRobot.git
 	cd ../
 	rosdep install --from-paths . --ignore-src
 	catkin_make
