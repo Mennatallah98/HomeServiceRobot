@@ -140,37 +140,82 @@ Sends velocity commands to the robot according to the buttons pressed in the joy
 
 ## Structure
 
-    └── MapMyWorld                                      # Map My World Project
-        └── my_robot
-            ├── CMakeLists.txt                          # compiler instructions
-            ├── config                                  # config folder for configuration files 
-            │   ├── base_local_planner_params.yaml
-            │   ├── costmap_common_params.yaml
-            │   ├── global_costmap_params.yaml
-            │   ├── local_costmap_params.yaml
-            │   └── __MACOSX
-            ├── db                                      # db folder for rtabmap database
-            │   └── rtabmap.db
-            ├── launch                                  # launch folder for launch file
-            │   ├── joy.launch
-            │   ├── localization.launch
-            │   ├── mapping.launch
-            │   ├── robot_description.launch
-            │   └── world.launch
-            ├── meshes                                  # meshes folder for sensors
-            │   └── hokuyo.dae
-            ├── package.xml                             # package info
-            ├── rviz
-            │   └── myworld.rviz
-            ├── scripts                                 # scripts folder for python nodes
-            │   └── joy_teleop
-            ├── urdf                                    # urdf folder for xarco files
-            │   ├── my_robot.gazebo
-            │   └── my_robot.xacro
-            └── worlds                                  # world folder for world files
-                └── myworld.world
+	└── HomeServiceRobot                                    # Home Service project
+	    ├── add_markers                                     # add markers package
+	    │   ├── CMakeLists.txt                              # compiler instructions
+	    │   ├── include                       
+	    │   │   └── add_markers
+	    │   ├── package.xml                                 # package info
+	    │   └── src                                         # source folder for C++ scripts
+	    │       ├── add_markers.cpp
+	    │       └── add_markers_time.cpp
+	    ├── my_robot                                        # my robot package
+	    │   ├── CMakeLists.txt                              # compiler instructions
+	    │   ├── launch                                      # launch folder for launch files
+	    │   │   ├── amcl.launch
+	    │   │   ├── joy.launch
+	    │   │   ├── robot_description.launch
+	    │   │   └── world.launch
+	    │   ├── maps                                        # maps folder for maps
+	    │   │   ├── myMap.pgm
+	    │   │   └── myMap.yaml
+	    │   ├── meshes                                      # meshes folder for sensors
+	    │   │   └── hokuyo.dae
+	    │   ├── package.xml                                 # package info                 
+	    │   ├── rviz                                        # rviz folder for rviz configuration files
+	    │   │   └── myworld.rviz
+	    │   ├── scripts                                     # scripts folder for python scripts
+	    │   │   └── joy_teleop
+	    │   ├── urdf                                        # urdf folder for xarco files
+	    │   │   ├── my_robot2.gazebo
+	    │   │   ├── my_robot2.xacro
+	    │   │   ├── my_robot.gazebo
+	    │   │   └── my_robot.xacro
+	    │   └── worlds                                      # world folder for world files
+	    │       └── myworld.world
+	    ├── pick_objects                                    # pick objects package
+	    │   ├── CMakeLists.txt                              # compiler instructions
+	    │   ├── include
+	    │   │   └── pick_objects
+	    │   ├── package.xml                                 # package info
+	    │   └── src                                         # source folder for C++ scripts
+	    │       └── pick_objects.cpp
+	    ├── scripts                                         # scripts folder for bash scripts
+	    │   ├── add_markers.sh
+	    │   ├── home_service.sh
+	    │   ├── pick_objects.sh
+	    │   ├── test_navigation.sh
+	    │   └── test_slam.sh
+	    └── slam_gmapping                                   # slam gmapping package
+		├── gmapping
+		│   ├── CHANGELOG.rst
+		│   ├── CMakeLists.txt
+		│   ├── launch                                  # launch folder for launch files 
+		│   │   └── gmapping.launch
+		│   ├── nodelet_plugins.xml
+		│   ├── package.xml                             # package info
+		│   ├── src                                     # source folder for C++ scripts
+		│   │   ├── main.cpp
+		│   │   ├── nodelet.cpp
+		│   │   ├── replay.cpp
+		│   │   ├── slam_gmapping.cpp
+		│   │   └── slam_gmapping.h
+		│   └── test
+		│       ├── basic_localization_laser_different_beamcount.test
+		│       ├── basic_localization_stage.launch
+		│       ├── basic_localization_stage_replay2.launch
+		│       ├── basic_localization_stage_replay.launch
+		│       ├── basic_localization_symmetry.launch
+		│       ├── basic_localization_upside_down.launch
+		│       ├── rtest.cpp
+		│       └── test_map.py
+		├── README.md
+		└── slam_gmapping
+		    ├── CHANGELOG.rst
+		    ├── CMakeLists.txt
+		    └── package.xml
 
-
+    
 
 [ROS]: http://www.ros.org
 [rviz]: http://wiki.ros.org/rviz
