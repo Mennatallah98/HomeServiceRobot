@@ -16,9 +16,6 @@ int marker_condition = 0;
    ros::init(argc, argv, "add_markers");
    ros::NodeHandle n;
 
-
-
-
    ros::Rate r(1);
    ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
 
@@ -78,7 +75,7 @@ int marker_condition = 0;
 
      
      shape = visualization_msgs::Marker::CUBE;
-     while(marker_condition==0)
+     while(marker_condition==0) //place the marker at pickup location
      {
         n.getParam("pickup_x",x_position_pickup);
         n.getParam("pickup_y",y_position_pickup);
@@ -90,14 +87,14 @@ int marker_condition = 0;
         n.getParam("marker",marker_condition);
      }
      
-     while(marker_condition==1)
+     while(marker_condition==1)  //remove the marker from pickup location (to simulate pickup)
      {
       marker.action = visualization_msgs::Marker::DELETE;
       marker_pub.publish(marker);
       ROS_INFO("picked up");
       n.getParam("marker",marker_condition);
      }
-    while(marker_condition==2)
+    while(marker_condition==2)   // place the marker at dropoff location (to simulate dropoff)
       {
       n.getParam("dropoff_x",x_position_dropoff);
       n.getParam("dropoff_y",y_position_dropoff);
