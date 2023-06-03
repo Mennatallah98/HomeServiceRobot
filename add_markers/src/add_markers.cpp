@@ -105,25 +105,6 @@ int marker_condition = 0;
       ROS_INFO("dropping off");
       n.getParam("marker",marker_condition);
     }
-    
-     
- 
-     /*// Cycle between different shapes
-     switch (shape)
-     {
-     case visualization_msgs::Marker::CUBE:
-       shape = visualization_msgs::Marker::SPHERE;
-        break;
-      case visualization_msgs::Marker::SPHERE:
-        shape = visualization_msgs::Marker::ARROW;
-       break;
-      case visualization_msgs::Marker::ARROW:
-        shape = visualization_msgs::Marker::CYLINDER;
-        break;
-      case visualization_msgs::Marker::CYLINDER:
-        shape = visualization_msgs::Marker::CUBE;
-        break;
-      }*/
   
       r.sleep();
    
